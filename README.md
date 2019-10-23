@@ -4,9 +4,8 @@
 ![image](https://user-images.githubusercontent.com/8188/38645675-ec708d0e-3db2-11e8-8f8b-a4a37ed612b9.png)
 
 
-The sample serverless service will create a REST API for products. It will be deployed to AWS. The data will be stored in a DynamoDB table.
+The serverless service creates a REST API for Terrahub products. It will be deployed to AWS. The data will be stored in a DynamoDB table.
 
-This is a companion app for the blog post [REST API in Java using DynamoDB and Serverless](https://serverless.com/blog/how-to-create-a-rest-api-in-java-using-dynamodb-and-serverless/).
 
 ## Install Pre-requisites
 
@@ -22,9 +21,9 @@ Test Java installation:
 ```
 $ java --version
 
-java 10 2018-03-20
-Java(TM) SE Runtime Environment 18.3 (build 10+46)
-Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10+46, mixed mode)
+java 13.0.1 2019-10-15
+Java(TM) SE Runtime Environment (build 13.0.1+9)
+Java HotSpot(TM) 64-Bit Server VM (build 13.0.1+9, mixed mode, sharing)
 ```
 
 Test Maven installation:
@@ -32,12 +31,11 @@ Test Maven installation:
 ```
 $ mvn -v
 
-Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-24T14:49:05-05:00)
-Maven home: /usr/local/apache-maven-3.5.3
-Java version: 10, vendor: Oracle Corporation
-Java home: /Library/Java/JavaVirtualMachines/jdk-10.jdk/Contents/Home
-Default locale: en_US, platform encoding: UTF-8
-OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+Apache Maven 3.6.2 (40f52333136460af0dc0d7232c0dc0bcf0d9e117; 2019-08-27T09:06:16-06:00)
+Maven home: /Applications/apache-maven-3.6.2
+Java version: 13.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-13.0.1.jdk/Contents/Home
+Default locale: en_CA, platform encoding: UTF-8
+OS name: "mac os x", version: "10.15", arch: "x86_64", family: "mac"
 ```
 
 ## Build the Java project
@@ -45,7 +43,7 @@ OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
 Create the java artifact (jar) by:
 
 ```
-$ cd aws-java-products-api
+$ cd terrahub-java-api-dynamodb
 $ mvn clean install
 
 [INFO] Scanning for projects...
@@ -55,14 +53,14 @@ $ mvn clean install
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ products-api ---
-[INFO] Deleting /Users/rupakg/projects/svrless/apps/aws-java-products-api/target
+[INFO] Deleting /Users/beninkster/projects/svrless/apps/terrahub-java-api-dynamodb/target
 
 ...
 ...
 
 [INFO] --- maven-install-plugin:2.4:install (default-install) @ products-api ---
-[INFO] Installing /Users/rupakg/projects/svrless/apps/aws-java-products-api/target/products-api-dev.jar to /Users/rupakg/.m2/repository/com/serverless/products-api/dev/products-api-dev.jar
-[INFO] Installing /Users/rupakg/projects/svrless/apps/aws-java-products-api/pom.xml to /Users/rupakg/.m2/repository/com/serverless/products-api/dev/products-api-dev.pom
+[INFO] Installing /Users/beninkster/projects/svrless/apps/terrahub-java-api-dynamodb/target/products-api-dev.jar to /Users/beninkster/.m2/repository/com/serverless/products-api/dev/products-api-dev.jar
+[INFO] Installing /Users/beninkster/projects/svrless/apps/terrahub-java-api-dynamodb/pom.xml to /Users/beninkster/.m2/repository/com/serverless/products-api/dev/products-api-dev.pom
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------

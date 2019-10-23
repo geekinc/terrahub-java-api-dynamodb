@@ -12,3 +12,6 @@ target
 
 # Serverless directories
 .serverless
+
+.idea
+*.iml
