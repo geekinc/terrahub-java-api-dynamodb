@@ -37,16 +37,11 @@ jobs:
         - ~/.m2
         key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run:
+    - run:
         name: Install Serverless CLI and dependencies
         command: |
           sudo npm i -g serverless
           npm install
-
-      - save_cache:
-        paths:
-        - node_modules
-        key: v1-dependencies-
 
     - run:
         name: Deploy application
