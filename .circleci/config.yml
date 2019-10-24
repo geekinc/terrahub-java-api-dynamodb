@@ -39,6 +39,10 @@ jobs:
         key: v1-dependencies-{{ checksum "pom.xml" }}
 
     - run:
+        name: Build the project
+        command: mvn clean install
+
+    - run:
         name: Install Serverless CLI and dependencies
         command: |
           sudo npm i -g serverless
