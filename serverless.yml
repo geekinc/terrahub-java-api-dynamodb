@@ -33,7 +33,7 @@ provider:
         - qldb:*
       Resource:
         - { "Fn::GetAtt": ["ProductsDynamoDBTable", "Arn"] }
-        - *
+        - { "Fn::GetAtt": ["ProductsQLDBLedger", "Arn"] }
   environment:
     PRODUCTS_TABLE_NAME: ${self:custom.productsTableName}
 
@@ -100,4 +100,5 @@ resources:
     ProductsQLDBLedger:
       Type: AWS::QLDB::Ledger
       Properties:
+        Name: "vehicle-registration"
         PermissionsMode: "ALLOW_ALL"
