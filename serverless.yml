@@ -30,9 +30,13 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-        - qldb:*
       Resource:
         - { "Fn::GetAtt": ["ProductsDynamoDBTable", "Arn" ] }
+    - Effect: Allow
+      Action:
+        - qldb:CreateLedger
+      Resource:
+        - { "Fn::GetAtt": ["ProductsQLDBTable", "Arn" ] }
   environment:
     PRODUCTS_TABLE_NAME: ${self:custom.productsTableName}
 
@@ -96,3 +100,7 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
+    ProductsQLDBTable:
+      Type: AWS::QLDB::Ledger
+      Properties:
+        PermissionsMode: "ALLOW_ALL"
