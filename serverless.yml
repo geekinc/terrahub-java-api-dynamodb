@@ -30,9 +30,12 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-        - qldb:CreateLedger
       Resource:
         - { "Fn::GetAtt": ["ProductsDynamoDBTable", "Arn" ] }
+    - Effect: Allow
+      Action:
+        - qldb:*
+      Resource: *
   environment:
     PRODUCTS_TABLE_NAME: ${self:custom.productsTableName}
 
