@@ -33,7 +33,6 @@ provider:
         - qldb:CreateLedger
       Resource:
         - { "Fn::GetAtt": ["ProductsDynamoDBTable", "Arn" ] }
-        - { "Fn::GetAtt": ["ProductsQLDBLedger", "Arn" ] }
   environment:
     PRODUCTS_TABLE_NAME: ${self:custom.productsTableName}
 
