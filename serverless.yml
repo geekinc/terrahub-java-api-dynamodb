@@ -69,6 +69,12 @@ functions:
       - http:
           path: /products/{id}
           method: delete
+  createLedger:
+    handler: com.serverless.CreateLedgerHandler
+    events:
+      - http:
+          path: /ledger
+          method: post
 
 resources:
   Resources:
