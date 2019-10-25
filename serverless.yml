@@ -32,7 +32,8 @@ provider:
         - dynamodb:DeleteItem
         - qldb:*
       Resource:
-        - { "Fn::GetAtt": ["ProductsDynamoDBTable", "Arn", "*" ] }
+        - { "Fn::GetAtt": ["ProductsDynamoDBTable", "Arn"] }
+        - *
   environment:
     PRODUCTS_TABLE_NAME: ${self:custom.productsTableName}
 
