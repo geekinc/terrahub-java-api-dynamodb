@@ -27,17 +27,18 @@ public class CreateLedgerHandler implements RequestHandler<Map<String, Object>, 
 
       try {
           // get the 'body' from input
-          JsonNode body = new ObjectMapper().readTree((String) input.get("body"));
-          
+          // JsonNode body = new ObjectMapper().readTree((String) input.get("body"));
+
 		  CreateLedger.create(Constants.LEDGER_NAME);
 		  CreateLedger.waitForActive(Constants.LEDGER_NAME);
-		  DescribeLedgerRequest request = new DescribeLedgerRequest().withName(Constants.LEDGER_NAME);
-		  DescribeLedgerResult result = client.describeLedger(request);
+
+		  DescribeLedgerRequest requestLDG = new DescribeLedgerRequest().withName(Constants.LEDGER_NAME);
+		  DescribeLedgerResult resultLDG = client.describeLedger(requestLDG);
 
           // send the response back
       		return ApiGatewayResponse.builder()
       				.setStatusCode(200)
-      				.setObjectBody(result)
+      				.setObjectBody(resultLDG)
       				.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
       				.build();
 
@@ -45,7 +46,7 @@ public class CreateLedgerHandler implements RequestHandler<Map<String, Object>, 
           logger.error("Error in creating ledger: " + ex);
 
           // send the error response back
-    			Response responseBody = new Response("Error in creating ledger: ", input);
+    			Response responseBody = new Response(ex.getMessage(), input);
     			return ApiGatewayResponse.builder()
     					.setStatusCode(500)
     					.setObjectBody(responseBody)
