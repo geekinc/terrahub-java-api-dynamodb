@@ -100,5 +100,17 @@ resources:
     ProductsQLDBLedger:
       Type: AWS::QLDB::Ledger
       Properties:
+        DeletionProtection: true
         Name: "vehicle-registration"
         PermissionsMode: "ALLOW_ALL"
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: name
+            KeyType: RANGE
+
