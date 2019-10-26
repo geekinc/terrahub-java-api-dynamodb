@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.serverless;
+package com.serverless.dal;
 
 import com.amazon.ion.system.IonSystemBuilder;
 import com.fasterxml.jackson.databind.SerializationFeature;

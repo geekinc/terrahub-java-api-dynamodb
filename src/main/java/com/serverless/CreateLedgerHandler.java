@@ -7,12 +7,8 @@ import com.amazonaws.services.qldb.model.DescribeLedgerRequest;
 import com.amazonaws.services.qldb.model.DescribeLedgerResult;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.serverless.dal.Product;
+import com.serverless.dal.CreateLedger;
 import org.apache.log4j.Logger;
-import com.amazon.ion.system.IonSystemBuilder;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.dataformat.ion.IonObjectMapper;
-import com.fasterxml.jackson.dataformat.ion.ionvalue.IonValueMapper;
 
 import java.util.Collections;
 import java.util.Map;

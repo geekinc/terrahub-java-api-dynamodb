@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.serverless;
+package com.serverless.dal;
 
 import com.amazonaws.services.qldb.AmazonQLDB;
 import com.amazonaws.services.qldb.AmazonQLDBClientBuilder;
@@ -26,9 +26,6 @@ import com.amazonaws.services.qldb.model.DescribeLedgerResult;
 import com.amazonaws.services.qldb.model.LedgerState;
 import com.amazonaws.services.qldb.model.PermissionsMode;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.serverless.dal.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

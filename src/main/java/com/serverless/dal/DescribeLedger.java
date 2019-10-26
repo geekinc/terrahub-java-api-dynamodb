@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.serverless;
+package com.serverless.dal;
 
 import com.amazonaws.services.qldb.AmazonQLDB;
 import com.amazonaws.services.qldb.model.DescribeLedgerRequest;
