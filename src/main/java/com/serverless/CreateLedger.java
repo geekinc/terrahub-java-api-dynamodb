@@ -26,6 +26,9 @@ import com.amazonaws.services.qldb.model.DescribeLedgerResult;
 import com.amazonaws.services.qldb.model.LedgerState;
 import com.amazonaws.services.qldb.model.PermissionsMode;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.serverless.dal.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,7 +56,6 @@ public final class CreateLedger {
 
     public static void main(final String... args) throws Exception {
         try {
-
             create(Constants.LEDGER_NAME);
 
             waitForActive(Constants.LEDGER_NAME);

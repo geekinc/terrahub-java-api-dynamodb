@@ -19,6 +19,7 @@ custom:
 provider:
   name: aws
   runtime: java8
+  timeout: 30
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
   iamRoleStatements:
@@ -33,7 +34,7 @@ provider:
         - qldb:*
       Resource:
         - { "Fn::GetAtt": ["ProductsDynamoDBTable", "Arn"] }
-        - { "Fn::GetAtt": ["ProductsQLDBLedger", "Arn"] }
+        - arn:aws:qldb:*
   environment:
     PRODUCTS_TABLE_NAME: ${self:custom.productsTableName}
 
@@ -97,20 +98,3 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-    ProductsQLDBLedger:
-      Type: AWS::QLDB::Ledger
-      Properties:
-        DeletionProtection: true
-        Name: "vehicle-registration"
-        PermissionsMode: "ALLOW_ALL"
-        AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
-          - AttributeName: name
-            AttributeType: S
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
-          - AttributeName: name
-            KeyType: RANGE
-
