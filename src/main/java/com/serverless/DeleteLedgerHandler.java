@@ -35,7 +35,7 @@ public class DeleteLedgerHandler implements RequestHandler<Map<String, Object>, 
         logger.error("Error in deleting product: " + ex);
 
         // send the error response back
-  			Response responseBody = new Response("Error in deleting product: ", input);
+  			Response responseBody = new Response("Error in deleting ledger " + ledger_name + ": ", input);
   			return ApiGatewayResponse.builder()
   					.setStatusCode(500)
   					.setObjectBody(responseBody)
