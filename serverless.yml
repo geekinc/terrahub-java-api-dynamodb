@@ -78,6 +78,12 @@ functions:
       - http:
           path: /ledger
           method: post
+  deleteLedger:
+    handler: com.serverless.DeleteLedgerHandler
+    events:
+      - http:
+          path: /ledger/{name}
+          method: delete
 
 resources:
   Resources:

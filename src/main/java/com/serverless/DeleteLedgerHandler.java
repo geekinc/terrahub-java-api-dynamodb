@@ -17,10 +17,14 @@ public class DeleteLedgerHandler implements RequestHandler<Map<String, Object>, 
 	@Override
 	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
 
-    try {
-		DeleteLedger.setDeletionProtection(Constants.LEDGER_NAME, false);
-		DeleteLedger.delete(Constants.LEDGER_NAME);
-		DeleteLedger.waitForDeleted(Constants.LEDGER_NAME);
+		// get the 'pathParameters' from input
+		Map<String,String> pathParameters =  (Map<String,String>)input.get("pathParameters");
+		String ledger_name = pathParameters.get("name");
+
+		try {
+		DeleteLedger.setDeletionProtection(ledger_name, false);
+		DeleteLedger.delete(ledger_name);
+		DeleteLedger.waitForDeleted(ledger_name);
 
         // send the response back
 		return ApiGatewayResponse.builder()
