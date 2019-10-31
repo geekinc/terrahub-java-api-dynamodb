@@ -71,12 +71,12 @@ public class QueryLedgerHandler implements RequestHandler<Map<String, Object>, A
 
 			  qldbSession.execute(txn -> {
 				  Result result = executeGeneralQuery(txn, paramID);
-				  result.iterator().forEachRemaining(row -> qldbResultOutput.add(row.toPrettyString()));
+				  result.iterator().forEachRemaining(row -> qldbResultOutput.add(row.toString()));
 			  }, (retryAttempt) -> logger.info("Retrying due to OCC conflict..."));
 
 			  return ApiGatewayResponse.builder()
 					  .setStatusCode(200)
-					  .setObjectBody( qldbResultOutput )
+					  .setRawBody( qldbResultOutput.toString() )
 					  .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
 					  .build();
 
