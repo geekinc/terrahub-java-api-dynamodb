@@ -72,24 +72,30 @@ functions:
       - http:
           path: /products/{id}
           method: delete
-  createLedger:
-    handler: com.serverless.CreateLedgerHandler
-    events:
-      - http:
-          path: /ledger
-          method: post
-  deleteLedger:
-    handler: com.serverless.DeleteLedgerHandler
-    events:
-      - http:
-          path: /ledger/{name}
-          method: delete
+#  createLedger:
+#    handler: com.serverless.CreateLedgerHandler
+#    events:
+#      - http:
+#          path: /ledger
+#          method: post
+#  deleteLedger:
+#    handler: com.serverless.DeleteLedgerHandler
+#    events:
+#      - http:
+#          path: /ledger/{name}
+#          method: delete
   getLedger:
     handler: com.serverless.GetLedgerHandler
     events:
       - http:
           path: /ledger/{name}
           method: get
+  queryLedger:
+    handler: com.serverless.QueryLedgerHandler
+    events:
+      - http:
+          path: /ledger/{name}
+          method: post
 
 resources:
   Resources:

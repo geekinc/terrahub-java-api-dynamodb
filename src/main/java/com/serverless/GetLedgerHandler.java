@@ -38,13 +38,13 @@ public class GetLedgerHandler implements RequestHandler<Map<String, Object>, Api
 			driver = createQldbDriver(ledgerName);
 
 			try (QldbSession qldbSession = createQldbSession()) {
-				logger.info("Listing table names ");
-				for (String tableName : qldbSession.getTableNames()) {
-					logger.info(tableName);
-				}
+//				logger.info("Listing table names ");
+//				for (String tableName : qldbSession.getTableNames()) {
+//					logger.info(tableName);
+//				}
 				return ApiGatewayResponse.builder()
 						.setStatusCode(200)
-						.setObjectBody( qldbSession.getLedgerName())
+						.setObjectBody( qldbSession.getTableNames() )
 						.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
 						.build();
 
