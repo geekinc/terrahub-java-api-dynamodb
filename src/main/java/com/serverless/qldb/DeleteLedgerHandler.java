@@ -1,7 +1,9 @@
-package com.serverless;
+package com.serverless.qldb;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.serverless.ApiGatewayResponse;
+import com.serverless.Response;
 import com.serverless.dal.Constants;
 import com.serverless.dal.DeleteLedger;
 import com.serverless.dal.Product;

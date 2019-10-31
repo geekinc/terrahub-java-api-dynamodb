@@ -1,17 +1,19 @@
-package com.serverless;
+package com.serverless.documentdb;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.serverless.ApiGatewayResponse;
+import com.serverless.Response;
 import org.apache.log4j.Logger;
 import java.util.Collections;
 import java.util.Map;
 
 import com.serverless.dal.Product;
 
-public class DeleteProductHandler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
+public class GetProductHandler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
 
 	private final Logger logger = Logger.getLogger(this.getClass());
 
@@ -24,26 +26,27 @@ public class DeleteProductHandler implements RequestHandler<Map<String, Object>,
         String productId = pathParameters.get("id");
 
         // get the Product by id
-        Boolean success = new Product().delete(productId);
+        Product product = new Product().get(productId);
 
         // send the response back
-        if (success) {
+        if (product != null) {
           return ApiGatewayResponse.builder()
-      				.setStatusCode(204)
+      				.setStatusCode(200)
+      				.setObjectBody(product)
       				.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
       				.build();
         } else {
           return ApiGatewayResponse.builder()
       				.setStatusCode(404)
-      				.setObjectBody("Product with id: '" + productId + "' not found.")
+              .setObjectBody("Product with id: '" + productId + "' not found.")
       				.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & Serverless"))
       				.build();
         }
     } catch (Exception ex) {
-        logger.error("Error in deleting product: " + ex);
+        logger.error("Error in retrieving product: " + ex);
 
         // send the error response back
-  			Response responseBody = new Response("Error in deleting product: ", input);
+  			Response responseBody = new Response("Error in retrieving product: ", input);
   			return ApiGatewayResponse.builder()
   					.setStatusCode(500)
   					.setObjectBody(responseBody)

@@ -1,4 +1,4 @@
-package com.serverless;
+package com.serverless.qldb;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
@@ -7,6 +7,8 @@ import com.amazonaws.services.qldb.model.DescribeLedgerRequest;
 import com.amazonaws.services.qldb.model.DescribeLedgerResult;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.serverless.ApiGatewayResponse;
+import com.serverless.Response;
 import com.serverless.dal.CreateLedger;
 import org.apache.log4j.Logger;
 

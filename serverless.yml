@@ -49,49 +49,49 @@ functions:
           path: /doc
           method: get
   listProducts:
-    handler: com.serverless.ListProductsHandler
+    handler: com.serverless.documentdb.ListProductsHandler
     events:
       - http:
           path: /products
           method: get
   getProduct:
-    handler: com.serverless.GetProductHandler
+    handler: com.serverless.documentdb.GetProductHandler
     events:
       - http:
           path: /products/{id}
           method: get
   createProduct:
-    handler: com.serverless.CreateProductHandler
+    handler: com.serverless.documentdb.CreateProductHandler
     events:
       - http:
           path: /products
           method: post
   deleteProduct:
-    handler: com.serverless.DeleteProductHandler
+    handler: com.serverless.documentdb.DeleteProductHandler
     events:
       - http:
           path: /products/{id}
           method: delete
 #  createLedger:
-#    handler: com.serverless.CreateLedgerHandler
+#    handler: com.serverless.qldb.CreateLedgerHandler
 #    events:
 #      - http:
 #          path: /ledger
 #          method: post
 #  deleteLedger:
-#    handler: com.serverless.DeleteLedgerHandler
+#    handler: com.serverless.qldb.DeleteLedgerHandler
 #    events:
 #      - http:
 #          path: /ledger/{name}
 #          method: delete
   getLedger:
-    handler: com.serverless.GetLedgerHandler
+    handler: com.serverless.qldb.GetLedgerHandler
     events:
       - http:
           path: /ledger/{name}
           method: get
   queryLedger:
-    handler: com.serverless.QueryLedgerHandler
+    handler: com.serverless.qldb.QueryLedgerHandler
     events:
       - http:
           path: /ledger/{name}

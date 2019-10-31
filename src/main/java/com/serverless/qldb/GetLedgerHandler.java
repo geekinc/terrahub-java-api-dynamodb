@@ -1,7 +1,9 @@
-package com.serverless;
+package com.serverless.qldb;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.serverless.ApiGatewayResponse;
+import com.serverless.Response;
 import com.serverless.dal.Product;
 import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;

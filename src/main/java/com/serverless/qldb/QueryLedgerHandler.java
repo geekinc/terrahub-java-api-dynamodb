@@ -1,4 +1,4 @@
-package com.serverless;
+package com.serverless.qldb;
 
 import com.amazon.ion.IonString;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -11,6 +11,8 @@ import com.amazonaws.services.qldb.model.DescribeLedgerResult;
 import com.amazonaws.services.qldbsession.AmazonQLDBSessionClientBuilder;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.serverless.ApiGatewayResponse;
+import com.serverless.Response;
 import com.serverless.dal.Constants;
 import com.serverless.dal.CreateLedger;
 import org.apache.log4j.Logger;
